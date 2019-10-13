@@ -1,0 +1,27 @@
+{
+    "name": "Bulletin Board project",
+    "type": "project",
+    "license": "Apache-2.0",
+    "authors": [
+      {
+        "name": "Daniil Savin",
+        "email": "daniall2010@yandex.ru"
+      }
+    ],
+    "autoload": {
+      "psr-4": {
+        "BulletinBoardProject\\": "app/"
+      }
+    },
+    "require": {
+      "php": "^7.3.8",
+      "nesbot/carbon": "^2.24",
+      "vlucas/phpdotenv": "^3.6",
+      "league/flysystem": "^1.0",
+      "intervention/image": "^2.5"
+    },
+    "require-dev": {
+        "phalcon/ide-stubs": "*",
+        "robmorgan/phinx": "^0.11.1"
+    }
+}

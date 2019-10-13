@@ -1,0 +1,79 @@
+version: '3.7'
+
+services:
+    workspace:
+        build:
+            context: ./workspace
+            args:
+                - PHP_VERSION=7.3
+                - TZ=${TIMEZONE}
+                - PHALCON_VERSION=${PHALCON_VERSION}
+        volumes:
+            - ../:/var/www:cached
+        extra_hosts:
+            - "dockerhost:${DOCKER_HOST_IP}"
+        tty: true
+        networks:
+            - backend
+    php-fpm:
+      build:
+        context: ./php-fpm
+        args:
+            - PHP_VERSION=7.3
+            - PHALCON_VERSION=${PHALCON_VERSION}
+      volumes:
+        - ./php-fpm/php7.3.ini:/usr/local/etc/php/php.ini
+        - ../:/var/www:cached
+      expose:
+        - "9000"
+      extra_hosts:
+        - "dockerhost:${DOCKER_HOST_IP}"
+      depends_on:
+        - workspace
+      networks:
+        - backend
+
+    mariadb:
+      build:
+        context: ./mariadb
+        args:
+          - MARIADB_VERSION=latest
+      restart: always
+      volumes:
+        - mariadb:/var/lib/mysql
+        - ./mariadb/docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d
+      ports:
+        - "${MARIADB_PORT}:3306"
+      environment:
+        - TZ=${TIMEZONE}
+        - MYSQL_ROOT_PASSWORD=${MARIADB_ROOT_PASSWORD}
+      networks:
+        - backend
+
+    apache2:
+      build:
+        context: ./apache2
+        args:
+          - PHP_UPSTREAM_CONTAINER=${APACHE_PHP_UPSTREAM_CONTAINER}
+          - PHP_UPSTREAM_PORT=${APACHE_PHP_UPSTREAM_PORT}
+          - PHP_UPSTREAM_TIMEOUT=${APACHE_PHP_UPSTREAM_TIMEOUT}
+          - DOCUMENT_ROOT=${APACHE_DOCUMENT_ROOT}
+      volumes:
+        - ../:/var/www:cached
+        - ${APACHE_HOST_LOG_PATH}:/var/log/apache2
+        - ${APACHE_SITES_PATH}:/etc/apache2/sites-available
+      ports:
+        - "${APACHE_HOST_HTTP_PORT}:80"
+        - "${APACHE_HOST_HTTPS_PORT}:443"
+      depends_on:
+        - php-fpm
+      networks:
+        - backend
+
+networks:
+  backend:
+    driver: bridge
+
+volumes:
+  mariadb:
+    driver: local
