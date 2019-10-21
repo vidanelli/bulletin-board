@@ -19,7 +19,7 @@ class IndexController extends ControllerBase
         $pagesRepository = new PagesRepository();
 
         $this->view->setVars([
-            'Posts' => $pagesRepository->fetchAll($limit, $page),
+            'Posts' => $pagesRepository->fetchForPaginatedPages($limit, $page),
             'Paginator' => $pagesRepository->getPaginator($limit, $page)
         ]);
     }

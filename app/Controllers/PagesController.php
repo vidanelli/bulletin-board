@@ -5,6 +5,7 @@
  */
 
 use BulletinBoardProject\Models\Posts;
+use BulletinBoardProject\Repositories\PagesRepository;
 
 class PagesController extends ControllerBase
 {
@@ -13,16 +14,8 @@ class PagesController extends ControllerBase
      */
     public function showAction($postId)
     {
-        $post = $this->modelsManager
-            ->createBuilder()
-            ->from(Posts::class)
-            ->where('id = :id:', ['id' => $postId])
-            ->andWhere('active = 1')
-            ->andWhere('deleted = 0')
-            ->getQuery()
-            ->execute()
-            ->getFirst();
-
-        $this->view->setVar('Post', $post);
+        $this->view->setVar(
+            'Post', (new PagesRepository())->fetchById($postId)
+        );
     }
 }

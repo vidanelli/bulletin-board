@@ -18,22 +18,49 @@ class PagesRepository extends Injectable
      * @param int $page
      * @return Phalcon\Mvc\Model\Resultset\Simple
      */
-    public function fetchAll(int $limit = 20, int $page = 1): object
+    public function fetchForPaginatedPages(int $limit = 20, int $page = 1): object
     {
         $offset = $limit * $page - $limit;
 
-        $posts = $this->modelsManager
-            ->createBuilder()
-            ->from(Posts::class)
-            ->where('active = 1')
-            ->andWhere('deleted = 0')
+        $posts = $this->createBuilder()
             ->limit($limit)
-            ->offset($offset)
-            ->getQuery()
-            ->execute();
+            ->offset($offset);
 
-        return $posts;
+        $this->selectActive($posts);
+
+        return $posts->getQuery()->execute();
     }
+
+    /**
+     *
+     * @return Phalcon\Mvc\Model\Resultset\Simple
+     */
+    public function fetchAll(): object
+    {
+
+        $posts = $this->createBuilder();
+
+        $this->selectActive($posts);
+
+        return $posts->getQuery()->execute();
+    }
+
+    /**
+     *
+     * @param int $id
+     * @return Phalcon\Mvc\Model\Resultset\Simple
+     */
+    public function fetchById(int $id): object
+    {
+
+        $post = $this->createBuilder()
+            ->where('id = :id:', ['id' => $id]);
+
+        $this->selectActive($post);
+
+        return $post->getQuery()->execute()->getFirst();
+    }
+
     /**
      * @param int $limit
      * @param int $page
@@ -61,6 +88,10 @@ class PagesRepository extends Injectable
         return $builder;
     }
 
+    /**
+     * @param BuilderInterface $builder
+     * @return $this
+     */
     protected function selectActive(BuilderInterface $builder)
     {
         $builder->andWhere('Page.active = :active:', ['active' => 1])
