@@ -54,7 +54,7 @@ class PagesRepository extends Injectable
     {
 
         $post = $this->createBuilder()
-            ->where('id = :id:', ['id' => $id]);
+            ->where('Page.id = :id:', ['id' => $id]);
 
         $this->selectActive($post);
 
