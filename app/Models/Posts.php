@@ -79,9 +79,10 @@ class Posts extends Model
         $this->setCreatedAt($this->getDI()->get('datetime')->toDateTimeString());
         $this->setUpdatedAt($this->getDI()->get('datetime')->toDateTimeString());
 
+        $auth = $this->getDI()->get('auth');
+
         if ($auth->isUserLogged()) {
-            $this->setCreatedByUserId($this->getDI()->get('auth')->getLoggedUser()->getId());
-            $this->setUpdatedByUserId($this->getDI()->get('auth')->getLoggedUser()->getId());
+            $this->setCreatedByUserId($auth->getLoggedUser()->getId());
         }
     }
 
@@ -89,9 +90,7 @@ class Posts extends Model
     {
         $this->setUpdatedAt($this->getDI()->get('datetime')->toDateTimeString());
 
-        if ($auth->isUserLogged()) {
-            $this->setUpdatedByUserId($this->getDI()->get('auth')->getLoggedUser()->getId());
-        }
+        $auth = $this->getDI()->get('auth');
     }
 
     /**

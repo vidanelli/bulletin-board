@@ -4,13 +4,13 @@ $router = $di->getRouter();
 
 $router->add('/users/:action', [
     'controller' => 'users',
-    'action' => 1
+    'action' => 1,
 ]);
 
 $router->add('/users/([0-9]+)', [
     'controller' => 'users',
     'action' => 'show',
-    'userId' => 1
+    'userId' => 1,
 ]);
 
 $router->add('/users/comment/add', [
@@ -23,10 +23,15 @@ $router->add('/users/change/password', [
     'action' => 'changePassword',
 ]);
 
+$router->add('/posts/:action', [
+    'controller' => 'pages',
+    'action' => 1,
+]);
+
 $router->add('/posts/([0-9]+)', [
     'controller' => 'pages',
     'action' => 'show',
-    'postId' => 1
+    'postId' => 1,
 ]);
 
 $router->handle();

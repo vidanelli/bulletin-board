@@ -108,46 +108,6 @@ class UsersController extends ControllerBase
         return false;
     }
 
-    public function addPostAction()
-    {
-        if ($this->request->isAjax() && $this->request->isPost()) {
-            $post = $this->request->getPost('postData');
-            $userId = $this->request->getPost('userId');
-
-            if ($this->request->getUploadedFiles()) {
-                foreach ($this->request->getUploadedFiles() as $uploadedFile) {
-                    $file = $uploadedFile;
-                }
-
-                $asset = new Assets();
-                $asset->setName($file->getName())
-                    ->save();
-
-                $post = new Posts($post);
-                $post->setImageId($asset->getId())
-                    ->save();
-
-                $asset->refresh()
-                    ->setPath("posts/{$post->getId()}/")
-                    ->save();
-
-                $img = $this->imagemanager->make($file->getTempName());
-                $img->resize(1000, null, function ($constraint) {
-                        $constraint->aspectRatio();
-                    })
-                    ->save();
-
-                $stream = fopen($file->getTempName(), 'r+');
-                $this->filesystem->writeStream('storage://'."posts/{$post->getId()}/".$file->getName(), $stream);
-                fclose($stream);
-            }
-
-            return false;
-        }
-
-        return $this->view->render('users', 'addPost');
-    }
-
     public function changePasswordAction()
     {
         $success = false;

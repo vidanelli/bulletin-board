@@ -28,7 +28,7 @@
                                                    <li class="uk-nav-header">{{ LoggedUser.getFirstName() }}</li>
                                                    <li><a href="/users/profile">Профиль</a></li>
                                                    <li><a href="/users/change/password">Изменить пароль</a></li>
-                                                   <li><a href="/users/addpost">Добавить объявление</a></li>
+                                                   <li><a href="/pages/create">Добавить объявление</a></li>
                                                    <li><a href="/users/logout">Выход</a></li>
                                                </ul>
                                             {% else %}
