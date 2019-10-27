@@ -4,6 +4,8 @@
  * @author Daniil Savin
  */
 
+namespace BulletinBoardProject\Controllers;
+
 use Phalcon\Mvc\Controller;
 
 class ControllerBase extends Controller

@@ -11,7 +11,10 @@
     "autoload": {
       "psr-4": {
         "BulletinBoardProject\\": "app/"
-      }
+      },
+      "files": [
+        "app/Helpers/app.php"
+      ]
     },
     "require": {
       "php": "^7.3.8",

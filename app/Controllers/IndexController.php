@@ -4,24 +4,32 @@
  * @author Daniil Savin
  */
 
-use BulletinBoardProject\Models\Posts;
+namespace BulletinBoardProject\Controllers;
+
+use BulletinBoardProject\Models\Posts\Posts;
 use Phalcon\Paginator\Adapter\QueryBuilder;
-use BulletinBoardProject\Repositories\PagesRepository;
+use BulletinBoardProject\Repositories\Posts\PostsRepository;
 
 class IndexController extends ControllerBase
 {
 
     public function indexAction()
     {
+        //var_dump($this->datetime);exit;
         $limit = 20;
         $page = $this->request->getQuery('page', 'int', 1);
 
-        $pagesRepository = new PagesRepository();
+        $postsRepository = new PostsRepository();
 
         $this->view->setVars([
-            'Posts' => $pagesRepository->fetchForPaginatedPages($limit, $page),
-            'Paginator' => $pagesRepository->getPaginator($limit, $page)
+            'Posts' => $postsRepository->fetchForPaginatedPages($limit, $page),
+            'Paginator' => $postsRepository->getPaginator($limit, $page)
         ]);
+    }
+
+    public function notFoundAction()
+    {
+        return "404 | Page Not Found";
     }
 
 }
