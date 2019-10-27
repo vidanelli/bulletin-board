@@ -15,7 +15,6 @@ class IndexController extends ControllerBase
 
     public function indexAction()
     {
-        //var_dump($this->datetime);exit;
         $limit = 20;
         $page = $this->request->getQuery('page', 'int', 1);
 

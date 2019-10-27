@@ -241,7 +241,6 @@ class UsersController extends ControllerBase
         $img = $this->imagemanager->make($file);
 
         if ($img->width() > 300) {
-            //$img->resizeCanvas(300, 300)->save();exit;
             if ($img->height() >= $img->width()) {
                 $img->resize(null, 300, function ($constraint) {
                         $constraint->aspectRatio();

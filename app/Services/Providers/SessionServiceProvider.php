@@ -43,7 +43,5 @@ class SessionServiceProvider implements ServiceProviderInterface
                 return $session;
             }
         );
-
-        //$di->get($this->name)->start();
     }
 }
