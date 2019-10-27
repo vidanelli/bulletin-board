@@ -74,9 +74,9 @@ class App
 
         $this->app->setEventsManager($this->dependencyInjector->get('eventsManager'));
         /**
-         * @var \Galactium\Space\Modules\Manager $modules
+         * @var \BulletinBoardProject\ServiceComponents\ComponentsManager $components
          */
-        $modules = $this->dependencyInjector
+        $components = $this->dependencyInjector
             ->get('componentsManager')
             ->register();
 

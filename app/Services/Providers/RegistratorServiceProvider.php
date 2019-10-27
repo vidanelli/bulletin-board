@@ -1,7 +1,7 @@
 <?php
 /**
- * Galactium @ 2018
- * @author Grigoriy Ivanov
+ * Bulletin Board Project @ 2019
+ * @author Daniil Savin
  */
 
 namespace BulletinBoardProject\Services\Providers;
