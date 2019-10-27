@@ -95,7 +95,7 @@
                         formData.append('postData[description]', this.formData.postData.description);
                         formData.append('userId', this.formData.userId);
 
-                        this.$http.post('/pages/save', formData).then(response => {
+                        this.$http.post('/posts/save', formData).then(response => {
                             this.finished = true;
                         }, response => {
                             // error callback

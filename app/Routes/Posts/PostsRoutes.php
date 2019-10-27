@@ -24,10 +24,9 @@ class PostsRoutes extends Group
             'action' => 1,
         ]);
 
-        $this->add('/([0-9]+)', [
+        $this->add('/{postId:[0-9]+}', [
             'controller' => 'posts',
             'action' => 'show',
-            'postId' => 1,
         ]);
 
     }

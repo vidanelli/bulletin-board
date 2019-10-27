@@ -21,6 +21,8 @@ return [
 
     \BulletinBoardProject\Services\Providers\FilesystemServiceProvider::class,
 
+    \BulletinBoardProject\Services\Providers\ImageManagerServiceProvider::class,
+
     \BulletinBoardProject\Services\Providers\ModelsMetadataServiceProvider::class,
 
     \BulletinBoardProject\Services\Providers\ComponentsManagerServiceProvider::class,

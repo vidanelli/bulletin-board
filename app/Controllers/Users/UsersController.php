@@ -9,6 +9,7 @@ namespace BulletinBoardProject\Controllers\Users;
 use BulletinBoardProject\Models\Users\{Users, UserPageComments};
 use BulletinBoardProject\Models\Posts\Posts;
 use BulletinBoardProject\Models\Assets\Assets;
+use BulletinBoardProject\Repositories\Users\UsersRepository;
 
 class UsersController extends ControllerBase
 {
@@ -140,7 +141,7 @@ class UsersController extends ControllerBase
     {
         if ($this->request->isAjax() && $this->request->isPost()) {
             $userId = $this->request->getPost('userId');
-            $user = $this->auth->findUserById($userId);
+            $user = (new UsersRepository())->findById($userId);
 
             $userAvatar = $user->getUserAvatar();
 

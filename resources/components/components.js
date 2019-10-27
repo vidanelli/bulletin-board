@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import './comments'
-import './pages'
+import './posts'
 import './users'
 import Pagination from './Pagination'
 
