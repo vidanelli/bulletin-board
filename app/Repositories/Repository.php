@@ -30,7 +30,7 @@ abstract class Repository extends Injectable
      * @param string $model
      * @return void
      */
-    public function setModel($model): void
+    public function setModel(string $model): void
     {
         $this->model = $model;
     }
@@ -48,7 +48,7 @@ abstract class Repository extends Injectable
      */
     public function getTmpTable(): string
     {
-        return substr($this->getModel(), 0, -1);
+        return substr(strrchr($this->getModel(), "\\"), 1, -1);
     }
 
     /**
