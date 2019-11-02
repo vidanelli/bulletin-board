@@ -6,6 +6,27 @@
 
 namespace BulletinBoardProject\Helpers;
 
+use Phalcon\Di;
+
+if (!function_exists('BulletinBoardProject\Helpers\container')) {
+    /**
+     * @param string|null $service
+     * @param array $params
+     * @return \Phalcon\DiInterface|mixed
+     */
+    function container($service = null, array $params = [])
+    {
+        $di = Di::getDefault();
+        $args = func_get_args();
+
+        if (empty($args)) {
+            return $di;
+        }
+
+        return $di->get($service, $params);
+    }
+}
+
 if (!function_exists('BulletinBoardProject\Helpers\appPath')) {
     /**
      * @param string $path

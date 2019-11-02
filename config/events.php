@@ -5,5 +5,5 @@
  */
 
 return [
-    //'application' => \BulletinBoardProject\Listeners\ApplicationListener::class,
+    'application' => \BulletinBoardProject\Listeners\ApplicationListener::class,
 ];

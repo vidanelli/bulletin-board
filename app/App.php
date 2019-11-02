@@ -11,6 +11,8 @@ use Phalcon\Config\Adapter\Php;
 use Phalcon\{Di, DiInterface};
 use Phalcon\Di\FactoryDefault;
 use Phalcon\Mvc\Application;
+use Phalcon\Http\Response;
+use BulletinBoardProject\System\Exception\HttpExceptionInterface;
 
 class App
 {
@@ -48,9 +50,18 @@ class App
             $response = $this->bootstrap()->handle();
 
         } catch (\Throwable $throwable) {
-            // /** @var Manager $errorManager */
-            //$errorManager = $this->dependencyInjector->get(Manager::class);
-            //$response = $errorManager->handle($throwable);
+            $response = new Response();
+
+            $response->setStatusCode(503);
+
+            if ($throwable instanceof HttpExceptionInterface) {
+                $response->setStatusCode($throwable->getStatusCode());
+
+                if ($throwable->hasHeaders()) {
+                    $response->setHeaders($throwable->getHeaders());
+                }
+            }
+
             echo $throwable->getMessage() . '<br>';
             echo '<pre>' . $throwable->getTraceAsString() . '</pre>';
         }
@@ -74,7 +85,7 @@ class App
 
         $this->app->setEventsManager($this->dependencyInjector->get('eventsManager'));
         /**
-         * @var \BulletinBoardProject\ServiceComponents\ComponentsManager $components
+         * @var \BulletinBoardProject\ServiceComponents\ComponentsManager $componentsManager
          */
         $components = $this->dependencyInjector
             ->get('componentsManager')

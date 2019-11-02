@@ -55,7 +55,7 @@ class Users extends Model implements UserInterface
     protected $location;
     /**
      * @var string|null
-     * Column(type="mediumtext", length=255, default='', nullable=true)
+     * @Column(type="mediumtext", length=255, default='', nullable=true)
      */
     protected $about_me;
     /**

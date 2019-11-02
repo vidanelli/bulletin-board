@@ -180,7 +180,7 @@ class UsersController extends ControllerBase
                 ->setBirthday($this->request->getPost('birthday'))
                 ->setLocation($this->request->getPost('location'))
                 ->setAboutMe($this->request->getPost('aboutMe'))
-                ->save();
+                ->save();//var_dump($this->request->getPost('aboutMe'));exit;
 
             if ($user->getUserAvatar()) {
                 $this->response->setJsonContent([
