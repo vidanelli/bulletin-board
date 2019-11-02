@@ -5,10 +5,6 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <!-- CSRF Token -->
-        <meta name="csrf-token-key" content="{{ security.getTokenKey() }}">
-        <meta name="csrf-token" content="{{ security.getSessionToken() ? security.getSessionToken() : security.getToken() }}">
-
         <link rel="stylesheet" href="/resources/dist/css/danelli.css">
         <title>Bulletin Board Project</title>
     </head>

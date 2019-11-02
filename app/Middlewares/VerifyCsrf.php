@@ -33,7 +33,7 @@ class VerifyCsrf
     }
 
     /**
-     * @param  \Illuminate\Http\Request  $request
+     * @param RequestInterface $request
      * @return bool
      */
     protected function isReading(RequestInterface $request): bool
