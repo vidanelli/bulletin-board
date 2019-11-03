@@ -6,8 +6,9 @@
 
 namespace BulletinBoardProject\Middlewares;
 
-use Phalcon\Http\RequestInterface;
-use BulletinBoardProject\System\Exception\UnauthorizedException;
+use Phalcon\Http\ResponseInterface;
+use Phalcon\Mvc\RouterInterface;
+use Phalcon\Mvc\Router\RouteInterface;
 use BulletinBoardProject\Middlewares\Traits\IsExclude;
 
 class Authenticate
@@ -22,7 +23,13 @@ class Authenticate
         '/users/signup',
     ];
 
-    public function handle($uri, $route, $router)
+    /**
+     * @param string $uri
+     * @param RouteInterface $route
+     * @param RouterInterface $router
+     * @return ResponseInterface|bool
+     */
+    public function handle(string $uri, RouteInterface $route, RouterInterface $router)
     {
         $auth = $router->getDi()->get('auth');
 
