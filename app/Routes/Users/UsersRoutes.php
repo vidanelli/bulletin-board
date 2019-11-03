@@ -7,7 +7,7 @@
 namespace BulletinBoardProject\Routes\Users;
 
 use Phalcon\Mvc\Router\Group;
-use BulletinBoardProject\Middlewares\Authenticate();
+use BulletinBoardProject\Middlewares\Authenticate;
 
 class UsersRoutes extends Group
 {
