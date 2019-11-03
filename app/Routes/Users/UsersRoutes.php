@@ -7,6 +7,7 @@
 namespace BulletinBoardProject\Routes\Users;
 
 use Phalcon\Mvc\Router\Group;
+use BulletinBoardProject\Middlewares\Authenticate();
 
 class UsersRoutes extends Group
 {
@@ -22,7 +23,12 @@ class UsersRoutes extends Group
         $this->add('/:action', [
             'controller' => 'users',
             'action' => 1,
-        ]);
+        ])->beforeMatch(
+            [
+                new Authenticate(),
+                'handle'
+            ]
+        );
 
         $this->add('/{userId:[0-9]+}', [
             'controller' => 'users',
@@ -37,7 +43,12 @@ class UsersRoutes extends Group
         $this->add('/change/password', [
             'controller' => 'users',
             'action' => 'changePassword',
-        ]);
+        ])->beforeMatch(
+            [
+                new Authenticate(),
+                'handle'
+            ]
+        );
 
     }
 }

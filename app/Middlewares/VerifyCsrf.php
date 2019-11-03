@@ -9,9 +9,12 @@ namespace BulletinBoardProject\Middlewares;
 use function BulletinBoardProject\Helpers\container;
 use BulletinBoardProject\System\Exception\UnauthorizedException;
 use Phalcon\Http\RequestInterface;
+use BulletinBoardProject\Middlewares\Traits\IsExclude;
 
 class VerifyCsrf
 {
+    use IsExclude;
+
     /**
      * @var array
      */
@@ -25,7 +28,11 @@ class VerifyCsrf
      */
     public function execute(RequestInterface $request): bool
     {
-        if ($this->isReading($request) || $this->isExclude($request) || $this->isVerified($request)) {
+        if (
+            $this->isReading($request) ||
+            $this->isExclude($request->getURI()) ||
+            $this->isVerified($request)
+        ) {
             return true;
         }
 
@@ -39,30 +46,6 @@ class VerifyCsrf
     protected function isReading(RequestInterface $request): bool
     {
         return in_array($request->getMethod(), ['HEAD', 'GET', 'OPTIONS']);
-    }
-
-    /**
-     * @param RequestInterface $request
-     * @return bool
-     */
-    protected function isExclude(RequestInterface $request): bool
-    {
-        $uri = $request->getURI();
-
-        foreach ($this->exclude as $pattern) {
-            if ($pattern === $uri) {
-                return true;
-            }
-
-            $pattern = preg_quote($pattern, '#');
-            $pattern = str_replace('\*', '.*', $pattern);
-
-            if (preg_match("#^{$pattern}$#u", $uri) === 1) {
-                return true;
-            }
-        }
-
-        return false;
     }
 
     /**

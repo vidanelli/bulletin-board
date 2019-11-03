@@ -74,7 +74,7 @@ class App
     /**
      * @return Application $app
      */
-    public function bootstrap()
+    public function bootstrap(): Application
     {
         $this->registerServices()
             ->registerListeners();
@@ -85,7 +85,7 @@ class App
 
         $this->app->setEventsManager($this->dependencyInjector->get('eventsManager'));
         /**
-         * @var \BulletinBoardProject\ServiceComponents\ComponentsManager $componentsManager
+         * @var \BulletinBoardProject\ServiceComponents\ComponentsManager $components
          */
         $components = $this->dependencyInjector
             ->get('componentsManager')

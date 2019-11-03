@@ -19,15 +19,16 @@ abstract class Listener implements InjectionAwareInterface
     /**
      * @return DiInterface
      */
-    public function getDI()
+    public function getDI(): DiInterface
     {
         return $this->di;
     }
 
     /**
      * @param DiInterface $dependencyInjector
+     * @return void
      */
-    public function setDI(\Phalcon\DiInterface $dependencyInjector)
+    public function setDI(DiInterface $dependencyInjector): void
     {
         $this->di = $dependencyInjector;
     }
