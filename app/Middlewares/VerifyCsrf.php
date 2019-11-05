@@ -7,7 +7,7 @@
 namespace BulletinBoardProject\Middlewares;
 
 use function BulletinBoardProject\Helpers\container;
-use BulletinBoardProject\System\Exception\UnauthorizedException;
+use BulletinBoardProject\System\Exception\TokenMismatchException;
 use Phalcon\Http\RequestInterface;
 use BulletinBoardProject\Middlewares\Traits\IsExclude;
 
@@ -36,7 +36,7 @@ class VerifyCsrf
             return true;
         }
 
-        throw new UnauthorizedException();
+        throw new TokenMismatchException();
     }
 
     /**
