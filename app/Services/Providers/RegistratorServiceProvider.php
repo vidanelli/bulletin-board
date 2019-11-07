@@ -4,12 +4,11 @@
  * @author Daniil Savin
  */
 
-namespace BulletinBoardProject\Services\Providers;
+namespace App\Services\Providers;
 
-use BulletinBoardProject\System\Di\Registrator;
-use Phalcon\Di\ServiceProviderInterface;
+use App\Core\Di\{Registrator, ServiceProvider};
 
-class RegistratorServiceProvider implements ServiceProviderInterface
+class RegistratorServiceProvider extends ServiceProvider
 {
     /**
      * The Service name.

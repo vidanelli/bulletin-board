@@ -4,14 +4,14 @@
  * @author Daniil Savin
  */
 
-namespace BulletinBoardProject\Services\Providers;
+namespace App\Services\Providers;
 
-use Phalcon\Di\ServiceProviderInterface;
+use App\Core\Di\ServiceProvider;
 use Phalcon\DiInterface;
 use Phalcon\Mvc\View\Engine\Volt;
 use Phalcon\Mvc\ViewBaseInterface;
 
-class VoltServiceProvider implements ServiceProviderInterface
+class VoltServiceProvider extends ServiceProvider
 {
     /**
      * The Service name.

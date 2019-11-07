@@ -4,12 +4,12 @@
  * @author Daniil Savin
  */
 
-namespace BulletinBoardProject\Middlewares;
+namespace App\Middlewares;
 
-use function BulletinBoardProject\Helpers\container;
-use BulletinBoardProject\System\Exception\TokenMismatchException;
+use function App\Helpers\container;
+use App\Core\Http\Exception\TokenMismatchException;
 use Phalcon\Http\RequestInterface;
-use BulletinBoardProject\Middlewares\Traits\IsExclude;
+use App\Middlewares\Traits\IsExclude;
 
 class VerifyCsrf
 {

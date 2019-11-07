@@ -4,12 +4,12 @@
  * @author Daniil Savin
  */
 
-namespace BulletinBoardProject\Services\Providers;
+namespace App\Services\Providers;
 
-use Phalcon\Di\ServiceProviderInterface;
+use App\Core\Di\ServiceProvider;
 use Phalcon\Mvc\Router;
 
-class RouterServiceProvider implements ServiceProviderInterface
+class RouterServiceProvider extends ServiceProvider
 {
     /**
      * The Service name.
@@ -35,7 +35,7 @@ class RouterServiceProvider implements ServiceProviderInterface
                 ]);
 
                 $router->removeExtraSlashes(true)
-                    ->setDefaultNamespace('BulletinBoardProject\Controllers')
+                    ->setDefaultModule('Home')
                     ->setDefaultController('index')
                     ->setEventsManager($this->get('eventsManager'));
 

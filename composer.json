@@ -10,7 +10,7 @@
     ],
     "autoload": {
       "psr-4": {
-        "BulletinBoardProject\\": "app/"
+        "App\\": "app/"
       },
       "files": [
         "app/Helpers/app.php"

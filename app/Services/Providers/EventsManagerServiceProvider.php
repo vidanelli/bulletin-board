@@ -4,12 +4,12 @@
  * @author Daniil Savin
  */
 
-namespace BulletinBoardProject\Services\Providers;
+namespace App\Services\Providers;
 
-use Phalcon\Di\ServiceProviderInterface;
+use App\Core\Di\ServiceProvider;
 use Phalcon\Events\Manager;
 
-class EventsManagerServiceProvider implements ServiceProviderInterface
+class EventsManagerServiceProvider extends ServiceProvider
 {
     /**
      * The Service name.

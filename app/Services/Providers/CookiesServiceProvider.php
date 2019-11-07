@@ -4,12 +4,12 @@
  * @author Daniil Savin
  */
 
-namespace BulletinBoardProject\Services\Providers;
+namespace App\Services\Providers;
 
-use Phalcon\Di\ServiceProviderInterface;
+use App\Core\Di\ServiceProvider;
 use Phalcon\Http\Response\Cookies;
 
-class CookiesServiceProvider implements ServiceProviderInterface
+class CookiesServiceProvider extends ServiceProvider
 {
     /**
      * The Service name.

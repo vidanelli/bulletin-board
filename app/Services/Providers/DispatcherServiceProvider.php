@@ -4,12 +4,12 @@
  * @author Daniil Savin
  */
 
-namespace BulletinBoardProject\Services\Providers;
+namespace App\Services\Providers;
 
-use Phalcon\Di\ServiceProviderInterface;
+use App\Core\Di\ServiceProvider;
 use Phalcon\Mvc\Dispatcher;
 
-class DispatcherServiceProvider implements ServiceProviderInterface
+class DispatcherServiceProvider extends ServiceProvider
 {
     /**
      * The Service name.

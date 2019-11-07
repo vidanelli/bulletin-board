@@ -4,11 +4,11 @@
  * @author Daniil Savin
  */
 
-namespace BulletinBoardProject\Helpers;
+namespace App\Helpers;
 
 use Phalcon\Di;
 
-if (!function_exists('BulletinBoardProject\Helpers\container')) {
+if (!function_exists('App\Helpers\container')) {
     /**
      * @param string|null $service
      * @param array $params
@@ -27,7 +27,7 @@ if (!function_exists('BulletinBoardProject\Helpers\container')) {
     }
 }
 
-if (!function_exists('BulletinBoardProject\Helpers\appPath')) {
+if (!function_exists('App\Helpers\appPath')) {
     /**
      * @param string $path
      * @return string
@@ -38,7 +38,7 @@ if (!function_exists('BulletinBoardProject\Helpers\appPath')) {
     }
 }
 
-if (!function_exists('BulletinBoardProject\Helpers\configPath')) {
+if (!function_exists('App\Helpers\configPath')) {
     /**
      * @param string $path
      * @return string
@@ -49,7 +49,7 @@ if (!function_exists('BulletinBoardProject\Helpers\configPath')) {
     }
 }
 
-if (!function_exists('BulletinBoardProject\Helpers\systemPath')) {
+if (!function_exists('App\Helpers\systemPath')) {
 
     function systemPath(string $path = ''): string
     {
@@ -57,7 +57,7 @@ if (!function_exists('BulletinBoardProject\Helpers\systemPath')) {
     }
 }
 
-if (!function_exists('BulletinBoardProject\Helpers\storagePath')) {
+if (!function_exists('App\Helpers\storagePath')) {
 
     function storagePath(string $path = ''): string
     {
@@ -65,7 +65,7 @@ if (!function_exists('BulletinBoardProject\Helpers\storagePath')) {
     }
 }
 
-if (!function_exists('BulletinBoardProject\Helpers\tmpPath')) {
+if (!function_exists('App\Helpers\tmpPath')) {
 
     function tmpPath(string $path = ''): string
     {
@@ -73,7 +73,7 @@ if (!function_exists('BulletinBoardProject\Helpers\tmpPath')) {
     }
 }
 
-if (!function_exists('BulletinBoardProject\Helpers\env')) {
+if (!function_exists('App\Helpers\env')) {
     /**
      * @param string $key
      * @param mixed $default

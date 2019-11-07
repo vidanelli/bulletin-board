@@ -4,12 +4,12 @@
  * @author Daniil Savin
  */
 
-namespace BulletinBoardProject\Services\Providers;
+namespace App\Services\Providers;
 
 use Carbon\Carbon;
-use Phalcon\Di\ServiceProviderInterface;
+use App\Core\Di\ServiceProvider;
 
-class DatetimeServiceProvider implements ServiceProviderInterface
+class DatetimeServiceProvider extends ServiceProvider
 {
     /**
      * The Service name.

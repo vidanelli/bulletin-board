@@ -4,11 +4,11 @@
  * @author Daniil Savin
  */
 
-namespace BulletinBoardProject\Services\Providers;
+namespace App\Services\Providers;
 
-use Phalcon\Di\ServiceProviderInterface;
+use App\Core\Di\ServiceProvider;
 
-class SessionServiceProvider implements ServiceProviderInterface
+class SessionServiceProvider extends ServiceProvider
 {
     /**
      * The Service name.

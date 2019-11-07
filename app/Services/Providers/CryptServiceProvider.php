@@ -4,13 +4,13 @@
  * @author Daniil Savin
  */
 
-namespace BulletinBoardProject\Services\Providers;
+namespace App\Services\Providers;
 
-use Phalcon\Di\ServiceProviderInterface;
+use App\Core\Di\ServiceProvider;
 use Phalcon\Crypt;
-use function BulletinBoardProject\Helpers\env;
+use function App\Helpers\env;
 
-class CryptServiceProvider implements ServiceProviderInterface
+class CryptServiceProvider extends ServiceProvider
 {
     /**
      * The Service name.

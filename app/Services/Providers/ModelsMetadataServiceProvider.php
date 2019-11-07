@@ -4,13 +4,13 @@
  * @author Daniil Savin
  */
 
-namespace BulletinBoardProject\Services\Providers;
+namespace App\Services\Providers;
 
-use Phalcon\Di\ServiceProviderInterface;
+use App\Core\Di\ServiceProvider;
 use Phalcon\Mvc\Model\MetaData\Memory;
 use Phalcon\Mvc\Model\MetaData\Strategy\Annotations;
 
-class ModelsMetadataServiceProvider implements ServiceProviderInterface
+class ModelsMetadataServiceProvider extends ServiceProvider
 {
     /**
      * The Service name.

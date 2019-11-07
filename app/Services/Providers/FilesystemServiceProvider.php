@@ -4,18 +4,18 @@
  * @author Daniil Savin
  */
 
-namespace BulletinBoardProject\Services\Providers;
+namespace App\Services\Providers;
 
-use Phalcon\Di\ServiceProviderInterface;
+use App\Core\Di\ServiceProvider;
 use League\Flysystem\Adapter\Local;
 use League\Flysystem\Filesystem;
 use League\Flysystem\MountManager;
 use League\Flysystem\Plugin\ListFiles;
-use function BulletinBoardProject\Helpers\storagePath;
-use function BulletinBoardProject\Helpers\systemPath;
-use function BulletinBoardProject\Helpers\tmpPath;
+use function App\Helpers\storagePath;
+use function App\Helpers\systemPath;
+use function App\Helpers\tmpPath;
 
-class FilesystemServiceProvider implements ServiceProviderInterface
+class FilesystemServiceProvider extends ServiceProvider
 {
     /**
      * The Service name.

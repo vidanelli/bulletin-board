@@ -4,12 +4,12 @@
  * @author Daniil Savin
  */
 
-namespace BulletinBoardProject\Middlewares;
+namespace App\Middlewares;
 
 use Phalcon\Http\ResponseInterface;
 use Phalcon\Mvc\RouterInterface;
 use Phalcon\Mvc\Router\RouteInterface;
-use BulletinBoardProject\Middlewares\Traits\IsExclude;
+use App\Middlewares\Traits\IsExclude;
 
 class Authenticate
 {

@@ -4,14 +4,14 @@
  * @author Daniil Savin
  */
 
-namespace BulletinBoardProject\Services\Providers;
+namespace App\Services\Providers;
 
-use Phalcon\Di\ServiceProviderInterface;
+use App\Core\Di\ServiceProvider;
 use Phalcon\Config;
 use Phalcon\Config\Adapter\Php;
-use function BulletinBoardProject\Helpers\configPath;
+use function App\Helpers\configPath;
 
-class ConfigServiceProvider implements ServiceProviderInterface
+class ConfigServiceProvider extends ServiceProvider
 {
     /**
      * The Service name.
@@ -24,7 +24,7 @@ class ConfigServiceProvider implements ServiceProviderInterface
      */
     private $configs = [
         'application',
-        'components',
+        'modules',
         'database',
         'session',
         'view',

@@ -22,6 +22,6 @@ $debug = new \Phalcon\Debug(new \Phalcon\Di\FactoryDefault());
  * ---------------------------------------------------------------
  *
  */
-$core = new \BulletinBoardProject\App();
+$core = new \App\App();
 
 $core->handle();

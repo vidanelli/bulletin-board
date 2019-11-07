@@ -4,13 +4,13 @@
  * @author Daniil Savin
  */
 
-namespace BulletinBoardProject\Services\Providers;
+namespace App\Services\Providers;
 
-use Phalcon\Di\ServiceProviderInterface;
+use App\Core\Di\ServiceProvider;
 use Phalcon\Mvc\Model;
 use Phalcon\Db\Adapter\Pdo\Factory;
 
-class DbServiceProvider implements ServiceProviderInterface
+class DbServiceProvider extends ServiceProvider
 {
     /**
      * The Service name.

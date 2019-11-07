@@ -4,7 +4,7 @@
  * @author Daniil Savin
  */
 
-use function BulletinBoardProject\Helpers\env;
+use function App\Helpers\env;
 
 return [
     'session' => [

@@ -4,7 +4,7 @@
  * @author Daniil Savin
  */
 
-namespace BulletinBoardProject\Middlewares\Traits;
+namespace App\Middlewares\Traits;
 
 trait IsExclude
 {

@@ -5,37 +5,35 @@
  */
 
 return [
-    \BulletinBoardProject\Services\Providers\ConfigServiceProvider::class,
+    App\Services\Providers\ConfigServiceProvider::class,
 
-    \BulletinBoardProject\Services\Providers\CookiesServiceProvider::class,
+    App\Services\Providers\CookiesServiceProvider::class,
 
-    \BulletinBoardProject\Services\Providers\CryptServiceProvider::class,
+    App\Services\Providers\CryptServiceProvider::class,
 
-    \BulletinBoardProject\Services\Providers\DatetimeServiceProvider::class,
+    App\Services\Providers\DatetimeServiceProvider::class,
 
-    \BulletinBoardProject\Services\Providers\DbServiceProvider::class,
+    App\Services\Providers\DbServiceProvider::class,
 
-    \BulletinBoardProject\Services\Providers\DispatcherServiceProvider::class,
+    App\Services\Providers\DispatcherServiceProvider::class,
 
-    \BulletinBoardProject\Services\Providers\EventsManagerServiceProvider::class,
+    App\Services\Providers\EventsManagerServiceProvider::class,
 
-    \BulletinBoardProject\Services\Providers\FilesystemServiceProvider::class,
+    App\Services\Providers\FilesystemServiceProvider::class,
 
-    \BulletinBoardProject\Services\Providers\ImageManagerServiceProvider::class,
+    App\Services\Providers\ImageManagerServiceProvider::class,
 
-    \BulletinBoardProject\Services\Providers\ModelsMetadataServiceProvider::class,
+    App\Services\Providers\ModelsMetadataServiceProvider::class,
 
-    \BulletinBoardProject\Services\Providers\ComponentsManagerServiceProvider::class,
+    App\Services\Providers\ModulesManagerServiceProvider::class,
 
-    \BulletinBoardProject\Services\Providers\RegistratorServiceProvider::class,
+    App\Services\Providers\RegistratorServiceProvider::class,
 
-    \BulletinBoardProject\Services\Providers\RouterServiceProvider::class,
+    App\Services\Providers\RouterServiceProvider::class,
 
-    \BulletinBoardProject\Services\Providers\RoutesServiceProvider::class,
+    App\Services\Providers\SessionServiceProvider::class,
 
-    \BulletinBoardProject\Services\Providers\SessionServiceProvider::class,
+    App\Services\Providers\ViewServiceProvider::class,
 
-    \BulletinBoardProject\Services\Providers\ViewServiceProvider::class,
-
-    \BulletinBoardProject\Services\Providers\VoltServiceProvider::class,
+    App\Services\Providers\VoltServiceProvider::class,
 ];

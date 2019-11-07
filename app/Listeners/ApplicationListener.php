@@ -4,9 +4,9 @@
  * @author Daniil Savin
  */
 
-namespace BulletinBoardProject\Listeners;
+namespace App\Listeners;
 
-use BulletinBoardProject\Middlewares\VerifyCsrf;
+use App\Middlewares\VerifyCsrf;
 use Phalcon\Application;
 use Phalcon\Events\EventInterface;
 
