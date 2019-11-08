@@ -6,7 +6,7 @@
 
 namespace App\Modules\Posts\Models;
 
-use Phalcon\Mvc\Model;
+use App\Core\Mvc\Model;
 use Phalcon\Mvc\Model\Relation;
 use App\Modules\Assets\Models\Assets;
 use App\Modules\Users\Models\Users;

@@ -6,7 +6,7 @@
 
 namespace App\Modules\Users\Models;
 
-use Phalcon\Mvc\Model;
+use App\Core\Mvc\Model;
 
 class UserTokens extends Model
 {

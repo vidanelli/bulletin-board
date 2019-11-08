@@ -6,8 +6,8 @@
 
 namespace App\Modules\Users\Models;
 
+use App\Core\Mvc\Model;
 use App\Modules\Assets\Models\Assets;
-use Phalcon\Mvc\Model;
 
 class Users extends Model implements UserInterface
 {

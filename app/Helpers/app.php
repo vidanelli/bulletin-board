@@ -7,6 +7,31 @@
 namespace App\Helpers;
 
 use Phalcon\Di;
+use Phalcon\Text;
+
+if (!function_exists('App\Helpers\uncamelize')) {
+    /**
+     * @param string $text
+     * @param string|null $delimiter
+     * @return string
+     */
+    function uncamelize(string $text, $delimiter = null): string
+    {
+        return Text::uncamelize($text, $delimiter);
+    }
+}
+
+if (!function_exists('App\Helpers\camelize')) {
+    /**
+     * @param string $text
+     * @param string|null $delimiter
+     * @return string
+     */
+    function camelize(string $text, $delimiter = null): string
+    {
+        return Text::camelize($text, $delimiter);
+    }
+}
 
 if (!function_exists('App\Helpers\container')) {
     /**

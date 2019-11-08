@@ -8,12 +8,15 @@ namespace App\Modules\Users;
 
 use App\Core\Mvc\Module;
 use Phalcon\DiInterface;
+use App\Modules\Users\Providers\{
+    UserAvatarServiceProvider,
+};
 
 class UsersModule extends Module
 {
 
     protected $providers = [
-        //UsersServiceProvider::class,
+        UserAvatarServiceProvider::class,
     ];
 
     /**

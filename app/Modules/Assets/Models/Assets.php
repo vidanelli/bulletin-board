@@ -6,7 +6,7 @@
 
 namespace App\Modules\Assets\Models;
 
-use Phalcon\Mvc\Model;
+use App\Core\Mvc\Model;
 
 class Assets extends Model
 {
@@ -57,6 +57,11 @@ class Assets extends Model
      * @Column(type="integer", length=1, default=0, nullable=false)
      */
     protected $deleted;
+
+    /**
+     * @var array
+     */
+    protected $append = ['src'];
 
     public function beforeCreate()
     {

@@ -122,7 +122,6 @@
     </div>
 </template>
 <script>
-    import axios from 'axios';
     export default {
         name: "Profile",
         props: {
@@ -130,10 +129,10 @@
                 type: Object,
                 required: true
             },
-            avatar: {
-                type: String,
+            userAvatar: {
+                type: Object,
                 default() {
-                    return '';
+                    return {};
                 }
             }
         },
@@ -153,6 +152,7 @@
                 },
                 finished: false,
                 image: '',
+                avatar: Object.keys(this.userAvatar).length !== 0 ? this.userAvatar.src : '',
                 genders: [
                   { text: '', value: '' },
                   { text: 'Male', value: 'Male' },

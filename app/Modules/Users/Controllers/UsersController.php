@@ -139,38 +139,14 @@ class UsersController extends ControllerBase
     public function profileAction()
     {
         if ($this->request->isAjax() && $this->request->isPost()) {
-            $userId = $this->request->getPost('userId');
-            $user = $this->usersRepository->findById($userId);
-
-            $userAvatar = $user->getUserAvatar();
+            $this->usersRepository->findById(
+                $this->request->getPost('userId')
+            );
 
             if ($this->request->getUploadedFiles()) {
-                foreach ($this->request->getUploadedFiles() as $uploadedFile) {
-                    $file = $uploadedFile;
-                }
-
-                if ($userAvatar) {
-                    $this->filesystem->delete('storage://' . $userAvatar->getPath() . $userAvatar->getName());
-
-                    $userAsset = Assets::findFirstById($user->getAvatar());
-                }
-
-                $this->resizeUploadAvatar($file->getTempName());
-
-                $stream = fopen($file->getTempName(), 'r+');
-                $this->filesystem->writeStream('storage://'."users/{$userId}/".$file->getName(), $stream);
-                fclose($stream);
-
-                $asset = $userAsset ?? new Assets();
-                $asset->setName($file->getName())
-                    ->setPath("users/{$userId}/")
-                    ->save();
-
-                $user->setAvatar($asset->getId());
-            } elseif (!$this->request->getPost('avatar') && $userAvatar) {
-                $userAsset = Assets::findFirstById($user->getAvatar());
-
-                $userAsset->delete();
+                $this->userAvatar->save($user, $this->request->getUploadedFiles()[0]);
+            } elseif ($this->request->getPost('avatar') === '' && $user->getUserAvatar()) {
+                $this->userAvatar->delete($user);
             }
 
             $user->setFirstName($this->request->getPost('name'))
@@ -230,30 +206,5 @@ class UsersController extends ControllerBase
         }
 
         return null;
-    }
-
-    /**
-     * @param string $file
-     * @return void
-     */
-    protected function resizeUploadAvatar($file): void
-    {
-        $img = $this->imagemanager->make($file);
-
-        if ($img->width() > 300) {
-            if ($img->height() >= $img->width()) {
-                $img->resize(null, 300, function ($constraint) {
-                        $constraint->aspectRatio();
-                    })
-                    ->resizeCanvas(300, 300)
-                    ->save();
-            } else {
-                $img->resize(300, null, function ($constraint) {
-                        $constraint->aspectRatio();
-                    })
-                    ->resizeCanvas(300, 300)
-                    ->save();
-            }
-        }
     }
 }
