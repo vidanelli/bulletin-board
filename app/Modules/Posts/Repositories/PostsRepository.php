@@ -6,12 +6,12 @@
 
 namespace App\Modules\Posts\Repositories;
 
-use App\Core\Repository\SqlRepository;
+use App\Core\Mvc\Model\Repository;
 use App\Modules\Posts\Models\Posts;
 use Phalcon\Mvc\Model\Query\BuilderInterface;
 use Phalcon\Paginator\Adapter\QueryBuilder;
 
-class PostsRepository extends SqlRepository
+class PostsRepository extends Repository
 {
     /**
      * PostsRepository constructor.

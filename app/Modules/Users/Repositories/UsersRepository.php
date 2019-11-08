@@ -6,10 +6,10 @@
 
 namespace App\Modules\Users\Repositories;
 
-use App\Core\Repository\SqlRepository;
+use App\Core\Mvc\Model\Repository;
 use App\Modules\Users\Models\Users;
 
-class UsersRepository extends SqlRepository
+class UsersRepository extends Repository
 {
     /**
      * UsersRepository constructor.

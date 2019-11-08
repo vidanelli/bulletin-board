@@ -4,14 +4,14 @@
  * @author Daniil Savin
  */
 
-namespace App\Core\Repository;
+namespace App\Core\Mvc\Model;
 
 use Phalcon\Di\Injectable;
 use Phalcon\Mvc\Model;
 use Phalcon\Mvc\Model\Query\BuilderInterface;
 use Phalcon\Paginator\Adapter\QueryBuilder;
 
-abstract class SqlRepository extends Injectable
+abstract class Repository extends Injectable
 {
     /**
      * @var string
@@ -65,9 +65,9 @@ abstract class SqlRepository extends Injectable
 
     /**
      * @param BuilderInterface $builder
-     * @return SqlRepository
+     * @return Repository
      */
-    protected function selectActive(BuilderInterface $builder): SqlRepository
+    protected function selectActive(BuilderInterface $builder): Repository
     {
         $builder->andWhere("{$this->getTmpTable()}.active = :active:", ['active' => 1])
             ->andWhere("{$this->getTmpTable()}.deleted = :deleted:", ['deleted' => 0]);
