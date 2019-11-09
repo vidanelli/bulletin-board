@@ -24,6 +24,12 @@ abstract class Model extends \Phalcon\Mvc\Model
     protected $append = [];
 
     /**
+     * Allow assign only values from whitelist.
+     * @var array
+     */
+    protected $whiteList = [];
+
+    /**
      * @param array|null $columns
      * @return array
      */
@@ -48,4 +54,12 @@ abstract class Model extends \Phalcon\Mvc\Model
         return $appends;
     }
 
+    /**
+     * @param string|null $key
+     * @return array
+     */
+    public function getWhiteList($key = null): array
+    {
+        return $key ? $this->whiteList[$key] : $this->whiteList;
+    }
 }

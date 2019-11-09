@@ -144,18 +144,18 @@ class UsersController extends ControllerBase
             );
 
             if ($this->request->getUploadedFiles()) {
-                $this->userAvatar->save($user, $this->request->getUploadedFiles()[0]);
+                $this->userAvatar->save(
+                    $user,
+                    $this->request->getUploadedFiles()[0]
+                );
             } elseif ($this->request->getPost('avatar') === '' && $user->getUserAvatar()) {
                 $this->userAvatar->delete($user);
             }
 
-            $user->setFirstName($this->request->getPost('name'))
-                ->setLastName($this->request->getPost('surename'))
-                ->setGender($this->request->getPost('gender'))
-                ->setBirthday($this->request->getPost('birthday'))
-                ->setLocation($this->request->getPost('location'))
-                ->setAboutMe($this->request->getPost('aboutMe'))
-                ->save();
+            $user->save(
+                $this->request->getPost('profileData'),
+                $user->getWhiteList('profile')
+            );
 
             if ($user->getUserAvatar()) {
                 $this->response->setJsonContent([

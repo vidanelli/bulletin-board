@@ -45,11 +45,11 @@
                                     <div class="uk-width-1-2 uk-first-column">
                                         <label class="uk-form-label">First Name</label>
                                         <div class="uk-form-controls">
-                                            <input v-model="formData.profileData.name"
-                                                   :class="{' uk-form-danger': errors.has('name')}"
+                                            <input v-model="formData.profileData.first_name"
+                                                   :class="{' uk-form-danger': errors.has('first_name')}"
                                                    v-validate="{required: true}"
                                                    class="uk-input"
-                                                   name="name"
+                                                   name="first_name"
                                                    type="text">
                                         </div>
                                     </div>
@@ -57,9 +57,9 @@
                                     <div class="uk-width-1-2">
                                         <label class="uk-form-label">Last Name</label>
                                         <div class="uk-form-controls">
-                                            <input v-model="formData.profileData.surename"
+                                            <input v-model="formData.profileData.last_name"
                                                    class="uk-input"
-                                                   name="surename"
+                                                   name="last_name"
                                                    type="text">
                                         </div>
                                     </div>
@@ -99,9 +99,9 @@
                                     <div class="uk-width-1-1 uk-grid-margin uk-first-column">
                                         <label class="uk-form-label">Bio</label>
                                         <div class="uk-form-controls">
-                                            <textarea v-model="formData.profileData.aboutMe"
+                                            <textarea v-model="formData.profileData.about_me"
                                                       class="uk-textarea"
-                                                      name="bio"
+                                                      name="about_me"
                                                       rows="3"
                                                       placeholder="Tell us a little bit about yourself"></textarea>
                                         </div>
@@ -140,12 +140,12 @@
             return {
                 formData: {
                     profileData: {
-                        name: this.user.first_name,
-                        surename: this.user.last_name,
+                        first_name: this.user.first_name,
+                        last_name: this.user.last_name,
                         gender: this.user.gender,
                         birthday: this.user.birthday,
                         location: this.user.location,
-                        aboutMe: this.user.about_me
+                        about_me: this.user.about_me
                     },
                     userId: this.user.id,
                     file: ''
@@ -167,7 +167,7 @@
                         let formData = new FormData();
                         formData.append('file', this.formData.file);
                         $.each(this.formData.profileData, function(index, value) {
-                            formData.append(index, value);
+                            formData.append('profileData['+index+']', value);
                         });
                         formData.append('userId', this.formData.userId);
                         formData.append('avatar', this.avatar);

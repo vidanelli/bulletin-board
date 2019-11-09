@@ -83,6 +83,21 @@ class Users extends Model implements UserInterface
      * @Column(type="integer", length=1, default=1, nullable=false)
      */
     protected $active;
+    /**
+     * Allow assign only values from whitelist.
+     * @var array
+     */
+    protected $whiteList = [
+        'profile' => [
+            'first_name',
+            'last_name',
+            'gender',
+            'birthday',
+            'location',
+            'about_me',
+            'avatar',
+        ]
+    ];
 
     public function initialize()
     {
