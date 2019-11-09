@@ -139,7 +139,7 @@ class UsersController extends ControllerBase
     public function profileAction()
     {
         if ($this->request->isAjax() && $this->request->isPost()) {
-            $this->usersRepository->findById(
+            $user = $this->usersRepository->findById(
                 $this->request->getPost('userId')
             );
 
